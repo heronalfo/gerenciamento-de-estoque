@@ -1,0 +1,18 @@
+from flask import Flask
+from pandas import read_sql
+
+
+app = Flask(__name__)
+
+class APi():
+		
+	import sqlite3 as SQL
+	
+	with SQL.connect('date.db') as conn:
+		c = conn.cursor()
+	
+	@app.run('/produtos')
+	def produtos():
+		return read_sql('SELECT * FROM produtos', conn)
+		
+	app.run(host='0.0.0.0')
