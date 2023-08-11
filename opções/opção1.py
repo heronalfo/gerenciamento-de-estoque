@@ -20,6 +20,10 @@ def opção1():
         
     produto = str(input(' PRODUTO: '))
     
+    if produto == '00':
+        system('clear')
+        manage.PAINEL()
+    
     if len(produto) < 1:
     	print('PRODUTO INVALIDO!')
     	opção1()

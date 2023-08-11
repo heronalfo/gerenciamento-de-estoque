@@ -1,9 +1,17 @@
 def opção5():
     
+    from datetime import datetime
     from os import system
+    import sqlite3 as SQL
     import manage
+    import re
+    
+    horario = datetime.now()
     
     system('clear')
+    
+    with SQL.connect('date.db') as conn:
+            c = conn.cursor()
             
     print(
         '',
@@ -128,9 +136,13 @@ def opção5():
         	
         	
             	
-                
+    c.execute(f'''UPDATE produtos SET edição = {horario.date()} WHERE id = {ID}''')     
+    system('clear')   
+    
+    conn.commit()
+    manage.PAINEL()
             
-        system('clear')       
-        manage.PAINEL()
-            
-        conexão.commit()        
+    
+
+if __name__ == '__main__':
+    opção5()

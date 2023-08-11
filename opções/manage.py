@@ -1,3 +1,4 @@
+import model
 
 def PAINEL():
     from os import system 
@@ -5,8 +6,7 @@ def PAINEL():
     import opção2
     import opção3
     import opção4
-    
-    import model
+    import opção5
         
     print(
 '',
@@ -14,29 +14,25 @@ def PAINEL():
 '\n{:>21}\n'.format('PAINEL FORGES'),
 '-'*30,
 '\n [1] CADASTRAR PRODUTOS  \n','-'*30,
-'\n [2] VER PRODUTOS CADASTRADOS\n','-'*30,
-'\n [3] DELETAR PRODUTOS  \n', '-'*30,
-'\n [4] RETIRADA E VENDA \n', '-'*30,
-'\n [5] EDITAR PRODUTO\n','-'*30,
-'\n [6] RELATORIO DE VENDAS\n', '-'*30    )
+'\n [2] PRODUTOS\n','-'*30,
+'\n [3] CAIXA \n', '-'*30,
+'\n [4] EDITAR PRODUTO\n','-'*30,
+'\n [5] RELATORIO DE VENDAS\n', '-'*30    )
     
     opção = int(input(' OPÇÃO >>> '))
     
     if opção == 1:
         opção1.opção1()
     
-    elif opção == 2:
+    if opção == 2:
         opção2.opção2()
       
             
     elif opção == 3:
-        opção3.opção3()
-      
-    elif opção == 4:
-        opção4.opção4()
+         opção4.opção4()
         
-    #elif opção == 5:
-#        opção5()
+    elif opção == 4:
+        opção5.opção5()
         
     else:
         system('clear')

@@ -14,6 +14,10 @@ def opção3():
     print('', '-'*30, '\n{:>21}\n'.format('DELETAR ITEM'), '-'*30)
         
     ID = int(input('DIGITE O ID: '))
+    
+    if ID == 00:
+        system('clear')
+        manage.PAINEL()
         
     c.execute(f'''DELETE  FROM produtos WHERE id = '{ID}' ''')
         

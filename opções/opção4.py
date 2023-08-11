@@ -16,9 +16,13 @@ def opção4():
         
     print('', '-'*30, '\n{:>21}\n'.format('RETIRADA E VENDA'), '-'*30)
         
-    PRODUTO = str(input(' DIGITE O ID DO PRODUTO: '))
+    produto = str(input(' DIGITE O ID DO PRODUTO: '))
     
-    PRODUTO = int(PRODUTO)
+    if produto == '00':
+        system('clear')
+        manage.PAINEL()
+    
+    produto = int(produto)
     
     print('','-'*30)
             
@@ -31,14 +35,14 @@ def opção4():
     	opção4()
         
     
-    valor = c.execute(f'''SELECT preço FROM produtos WHERE id = {PRODUTO}''')
+    valor = c.execute(f'''SELECT preço FROM produtos WHERE id = {produto}''')
       
     
     PREÇOS = valor.fetchone()
     PREÇO = PREÇOS[0]*QUANTIDADE
         
        
-    c.execute(f'''UPDATE produtos SET faturamento = faturamento + {float(PREÇO)} WHERE id = {PRODUTO}''')
+    c.execute(f'''UPDATE produtos SET faturamento = faturamento + {float(PREÇO)} WHERE id = {produto}''')
     
     print('','-'*30)
     
@@ -48,7 +52,7 @@ def opção4():
     
     print(f' Preço {PREÇO} R$')
     
-    c.execute(f'''UPDATE produtos SET estoque = estoque - {QUANTIDADE} WHERE id = {PRODUTO}''')
+    c.execute(f'''UPDATE produtos SET estoque = estoque - {QUANTIDADE} WHERE id = {produto}''')
     
     
     c.execute(
@@ -63,7 +67,7 @@ def opção4():
     )
     
     VALUES (
-    '{PRODUTO}',
+    '{produto}',
     '{QUANTIDADE}',
     '{PREÇO}',
     '{horario}'

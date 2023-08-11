@@ -5,6 +5,7 @@ def PAINEL():
     from opções import opção2
     from opções import opção3
     from opções import opção4
+    from opções import opção5
     
     import model
         
@@ -35,8 +36,8 @@ def PAINEL():
     elif opção == 4:
         opção4.opção4()
         
-    #elif opção == 5:
-#        opção5()
+    elif opção == 5:
+        opção5.opção5()
         
     else:
         system('clear')
