@@ -2,6 +2,7 @@ def opção3():
     
     from os import system
     import sqlite3 as SQL
+    import manage
     
     
     
@@ -21,6 +22,8 @@ def opção3():
     system('clear')
     
     print(' ITEM REMOVIDO COM SUCESSO!')
+    
+    manage.PAINEL()
 
 if __name__ == '__main__':
 	opção3()  

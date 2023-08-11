@@ -3,6 +3,7 @@ def opção4():
     from datetime import datetime
     from os import system
     import sqlite3 as SQL
+    import manage
     
     
     
@@ -80,6 +81,8 @@ def opção4():
     input('\n [PRESS ENTER]')
     
     system('clear')
+    
+    manage.PAINEL()
     
 if __name__ == "__main__":
 	opção4()

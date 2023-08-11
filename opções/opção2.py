@@ -3,6 +3,7 @@ def opção2():
     from pandas import read_sql
     from os import system
     import sqlite3 as SQL
+    import manage
     
     
     
@@ -42,6 +43,8 @@ def opção2():
     	
     	input('\n\n[PRESS ENTER]')
     	system('clear')
+    
+    manage.PAINEL()
 
 if __name__ == '__main__':
 	opção2()

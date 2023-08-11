@@ -3,6 +3,7 @@ def opção1():
     from datetime import datetime
     from os import system
     import sqlite3 as SQL
+    import manage
       
   
       
@@ -55,6 +56,8 @@ def opção1():
     system('clear')
            
     print(' PRODUTO CADASTRADO')
+    
+    manage.PAINEL()
    
 if __name__ == '__main__':
 	opção1()

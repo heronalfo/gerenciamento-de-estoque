@@ -1,6 +1,7 @@
 def opção5():
     
     from os import system
+    import manage
     
     system('clear')
             
@@ -130,6 +131,6 @@ def opção5():
                 
             
         system('clear')       
-        PAINEL()
+        manage.PAINEL()
             
         conexão.commit()        
