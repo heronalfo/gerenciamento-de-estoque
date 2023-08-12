@@ -1,8 +1,5 @@
-*. bak
+*.bak
 
-opções
-/date.db
+opções/datebase.db
 
-
-opções/
-opções.py
+opções/opções.py

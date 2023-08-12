@@ -4,89 +4,145 @@ def opção4():
     from os import system
     import sqlite3 as SQL
     import manage
-    
-    
-    
-    with SQL.connect('date.db') as conexão:
-    	c = conexão.cursor() 
+    import re
     
     horario = datetime.now()
     
     system('clear')
+    
+    with SQL.connect('datebase.db') as conn:
+            c = conn.cursor()
+            
+    print(
+        '',
+        '-'*30,
+        '\n{:>21}\n'.format('EDITAR PRODUTO'),
+        '-'*30)
         
-    print('', '-'*30, '\n{:>21}\n'.format('RETIRADA E VENDA'), '-'*30)
-        
-    produto = str(input(' DIGITE O ID DO PRODUTO: '))
-    
-    if produto == '00':
-        system('clear')
-        manage.PAINEL()
-    
-    produto = int(produto)
-    
+    ID = str(input(' DIGITE O ID DO PRODUTO: ')
+    )
+            
     print('','-'*30)
             
-    QUANTIDADE = int(input(' QUANTIDADE: ')
-    )
-    
-    if QUANTIDADE < 1:
-    	system('clear')
-    	print('QUANTIDADE INVALIDA!')
-    	opção4()
+    prg1 = input(' DESEJA ALTERAR O NOME? [S/N]')
+            
+    if prg1 == 'S':
+        print('','-'*30)
+                
+        NOVO_NOME = str(input(' NOVO NOME: '))
         
-    
-    valor = c.execute(f'''SELECT preço FROM produtos WHERE id = {produto}''')
-      
-    
-    PREÇOS = valor.fetchone()
-    PREÇO = PREÇOS[0]*QUANTIDADE
-        
-       
-    c.execute(f'''UPDATE produtos SET faturamento = faturamento + {float(PREÇO)} WHERE id = {produto}''')
-    
+        if len(NOVO_NOME) < 1:
+        	system('clear')
+        	print('NOME INVALIDO!')
+        	opção4()
+        	
+                
+        c.execute(
+                f'''
+                UPDATE produtos SET produto = '{NOVO_NOME}' WHERE id = {ID}
+                
+                ''')
+                
     print('','-'*30)
+            
+            
+    prg2 = input(' DESEJA ALTERAR O PREÇO?  [S/N]')
+    if prg2 == 'S':
+        print('-'*30)
+        
+        NOVO_VALOR = str(input(' DIGITE O NOVO PREÇO: ')).replace(',', '.')
+                
+        VALOR_INT = float(NOVO_VALOR)
+        
+        if VALOR_INT < 1:
+        	system('clear')
+        	print('VALOR INVALIDO!')
+        	opção4()
+        	
+                
+        c.execute(
+                f'''
+                
+                UPDATE produtos SET preço = {VALOR_INT} WHERE id = {ID}
+                
+                '''
+                
+                
+        )
+                
+        print('-'*30)
+            
+        prg3 = input(' DESEJA ALTERAR O ESTOQUE? [S/N]')
+            
+        if prg3 == 'S':
+                
+            print('','-'*30)
+            NOVO_ESTOQUE = int(input(' NOVO ESTOQUE: '))
+            
+            if NOVO_ESTOQUE < 1:
+            	system('clear')
+            	print('ESTOQUE INVALIDO!')
+            	opção1()
+            
+            c.execute(
+                f'''
+               UPDATE produtos SET estoque = {NOVO_ESTOQUE} WHERE id = {ID}
+                
+                ''')       
+           
+        prg4 = input(' DESEJA ALTERAR A DATA DE CADASTRO DO PRODUTO? [S/N] ')
+         
+        if prg4 == 'S':
+         	print('','-'*30)
+         	
+         	
+         	padrao = re.compile('\d{2}/\d{2}/\d{4}')
+         	
+         	DATA = str(input(' NOVA DATA: '))
+         	
+         	if re.match(padrao, DATA):
+         		
+         		c.execute(f''' UPDATE produtos SET data = {DATA} WHERE id = {ID}''')
+    	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+            	
+    c.execute(f'''UPDATE produtos SET edição = {horario.date()} WHERE id = {ID}''')     
+    system('clear')   
     
-    
-    
-    
-    
-    print(f' Preço {PREÇO} R$')
-    
-    c.execute(f'''UPDATE produtos SET estoque = estoque - {QUANTIDADE} WHERE id = {produto}''')
-    
-    
-    c.execute(
-    f'''
-    
-    INSERT INTO vendas (
-    
-    id_produto,
-    quantidade,
-    preço,
-    horario
-    )
-    
-    VALUES (
-    '{produto}',
-    '{QUANTIDADE}',
-    '{PREÇO}',
-    '{horario}'
-    
-    
-    
-    )
-    
-    '''
-    )
-    
-    
-    conexão.commit()
-    
-    input('\n [PRESS ENTER]')
-    
-    system('clear')
-    
+    conn.commit()
     manage.PAINEL()
+            
     
-if __name__ == "__main__":
-	opção4()
+
+if __name__ == '__main__':
+    opção4()

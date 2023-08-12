@@ -7,7 +7,7 @@ def opção1():
       
   
       
-    with SQL.connect('date.db') as conexão:
+    with SQL.connect('datebase.db') as conexão:
     	c = conexão.cursor()
     	
     

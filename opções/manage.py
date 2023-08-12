@@ -6,18 +6,17 @@ def PAINEL():
     import opção2
     import opção3
     import opção4
-    import opção5
         
     print(
 '',
 '-'*30,
 '\n{:>21}\n'.format('PAINEL FORGES'),
 '-'*30,
-'\n [1] CADASTRAR PRODUTOS  \n','-'*30,
-'\n [2] PRODUTOS\n','-'*30,
-'\n [3] CAIXA \n', '-'*30,
-'\n [4] EDITAR PRODUTO\n','-'*30,
-'\n [5] RELATORIO DE VENDAS\n', '-'*30    )
+'\n [1] CADASTRAR PRODUTOS › \n','-'*30,
+'\n [2] PRODUTOS › \n','-'*30,
+'\n [3] CAIXA › \n', '-'*30,
+'\n [4] EDITAR PRODUTO › \n','-'*30,
+'\n [5] RELATORIO DE VENDAS › \n', '-'*30    )
     
     opção = int(input(' OPÇÃO >>> '))
     
@@ -29,10 +28,10 @@ def PAINEL():
       
             
     elif opção == 3:
-         opção4.opção4()
+         opção3.opção3()
         
     elif opção == 4:
-        opção5.opção5()
+        opção4.opção4()
         
     else:
         system('clear')
